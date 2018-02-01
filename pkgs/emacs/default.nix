@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, autoreconfHook, pkgconfig, texinfo, gnutls
+{ stdenv, fetchgit, autoreconfHook, pkgconfig, texinfo, gnutls
 , gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff, libungif
 , ncurses }:
 
