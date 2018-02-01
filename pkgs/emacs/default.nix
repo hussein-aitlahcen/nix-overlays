@@ -5,7 +5,7 @@
 stdenv.mkDerivation rec {
   name = "emacs-${version}${versionModifier}";
   version = "26.0";
-  versionModifier = ".90";
+  versionModifier = ".91";
 
   src = fetchgit {
     url = https://git.savannah.gnu.org/git/emacs.git;
