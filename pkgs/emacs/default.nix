@@ -28,9 +28,9 @@ stdenv.mkDerivation rec {
     texinfo
   ];
 
-  CFLAGS = "-Ofast";
+  CFLAGS = "-O3";
 
-  configureFlags = [ "--with-x-toolkit=no" ];
+  configureFlags = [ "--with-x-toolkit=lucid" "--with-xft" ];
 
   patchPhase = ''
     echo '(defun emacs-repository-get-version (&rest _) "${src.rev}")' >> lisp/version.el
