@@ -16,6 +16,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ autoreconfHook pkgconfig texinfo ];
 
   buildInputs = [
+    gtk3
     gnutls
     libXaw
     libXext
@@ -29,8 +30,6 @@ stdenv.mkDerivation rec {
   ];
 
   CFLAGS = "-O3";
-
-  configureFlags = [ "--with-x-toolkit=lucid" "--with-xft" ];
 
   patchPhase = ''
     echo '(defun emacs-repository-get-version (&rest _) "${src.rev}")' >> lisp/version.el
