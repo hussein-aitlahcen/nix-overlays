@@ -7,7 +7,7 @@ stdenv.mkDerivation rec {
   src = fetchgit {
     url = https://github.com/dracula/zsh.git;
     rev = "22058079469b74af07f1f4984df505f9b5156c1f";
-    sha256 = "1zk9xm01v4chnxf9ns9c3kx2jal3lj88hadv5vp0zb8xr9vz4f31";
+    sha256 = "1kn88i93fwiyk1cmhrm67j973i4f6pr34yixrnql24wz8w5zk8zi";
   };
 
   installPhase = ''
