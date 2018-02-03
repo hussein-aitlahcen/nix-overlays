@@ -1,5 +1,5 @@
 { stdenv, fetchgit, autoreconfHook, pkgconfig, texinfo, gnutls
-, gtk3, libXaw, libXext, libXpm, libjpeg, libpng, libtiff, libungif
+, gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff, libungif
 , ncurses }:
 
 stdenv.mkDerivation rec {
@@ -28,6 +28,19 @@ stdenv.mkDerivation rec {
     ncurses
     texinfo
   ];
+
+  patchPhase = ''
+    echo '(defun emacs-repository-get-version (&rest _) "${src.rev}")' >> lisp/version.el
+    for f in $(find . -name Makefile.in); do
+      substituteInPlace $f --replace /bin/pwd pwd
+    done
+  '';
+
+  fixupPhase = ''
+    mkdir -p $out/share/emacs/site-lisp
+    cp ${<nixpkgs/pkgs/applications/editors/emacs/site-start.el>} $out/share/emacs/site-lisp/site-start.el
+    $out/bin/emacs --batch -f batch-byte-compile $out/share/emacs/site-lisp/site-start.el
+  '';
 
   meta = with stdenv.lib; {
     description = "The extensible, customizable GNU text editor";
