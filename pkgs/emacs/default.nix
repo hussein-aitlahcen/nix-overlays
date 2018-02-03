@@ -17,7 +17,6 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     gnutls
-    gtk3
     libXaw
     libXext
     libXpm
@@ -28,6 +27,10 @@ stdenv.mkDerivation rec {
     ncurses
     texinfo
   ];
+
+  CFLAGS = "-Ofast";
+
+  configureFlags = [ "--with-x-toolkit=no" ];
 
   patchPhase = ''
     echo '(defun emacs-repository-get-version (&rest _) "${src.rev}")' >> lisp/version.el
