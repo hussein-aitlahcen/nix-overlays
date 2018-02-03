@@ -1,4 +1,4 @@
-{ stdenv, fetchgit };
+{ stdenv, fetchgit }:
 
 stdenv.mkDerivation rec {
   name = "zsh-theme-dracula-${version}";
