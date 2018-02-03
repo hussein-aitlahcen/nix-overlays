@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
   };
 
   installPhase = ''
-    mkdir -p $out/share/themes
-    cp dracula.zsh-theme $out/share/themes
+    mkdir -p $out/share/oh-my-zsh/themes
+    cp dracula.zsh-theme $out/share/oh-my-zsh/themes
   '';
 
   meta = with stdenv.lib; {
