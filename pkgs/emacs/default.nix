@@ -2,7 +2,7 @@
 , gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff
 , libungif, libxml2 , ncurses, gettext, acl, gpm, gconf, dbus
 , libselinux, Xaw3d, alsaLib, imagemagick, libXft, librsvg
-, xlibsWrapper
+, xlibsWrapper, automake
 }:
 
 stdenv.mkDerivation rec {
@@ -15,8 +15,13 @@ stdenv.mkDerivation rec {
     rev = "8d4500087f547e203cfba03f61dcbe641bf650de";
     sha256 = "1zk9xm01v4chnxf9ns9c3kx2jal3lj88hadv5vp0zb8xr9vz4f31";
   };
- 
-  nativeBuildInputs = [ autoreconfHook pkgconfig texinfo ];
+
+  nativeBuildInputs = [
+    autoreconfHook
+    automake
+    pkgconfig
+    texinfo
+  ];
 
   buildInputs = [
     gtk3
@@ -45,6 +50,12 @@ stdenv.mkDerivation rec {
   ];
 
   CFLAGS = "-O3";
+
+  configureFlags = [
+    "--with-modules"
+    "--with-x-toolkit=gtk3"
+    "--with-xft"
+  ];
 
   patchPhase = ''
     echo '(defun emacs-repository-get-version (&rest _) "${src.rev}")' >> lisp/version.el
