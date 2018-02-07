@@ -1,6 +1,6 @@
 { stdenv, fetchgit, autoreconfHook, pkgconfig, texinfo, gnutls
 , gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff
-, libungif, libxml2 , ncurses, gettext, acl, gpm, gconf, dbus
+, libungif, libxml2 , ncurses, gettext, acl, gpm, dbus
 , libselinux, Xaw3d, alsaLib, imagemagick, libXft, librsvg
 , xlibsWrapper, automake
 }:
@@ -41,7 +41,6 @@ stdenv.mkDerivation rec {
     texinfo
     gettext
     gpm
-    gconf
     libselinux
     dbus
     Xaw3d
