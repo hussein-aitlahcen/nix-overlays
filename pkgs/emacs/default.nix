@@ -1,6 +1,9 @@
 { stdenv, fetchgit, autoreconfHook, pkgconfig, texinfo, gnutls
-, gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff, libungif
-, ncurses }:
+, gtk3 ? null, libXaw, libXext, libXpm, libjpeg, libpng, libtiff
+, libungif, libxml2 , ncurses, gettext, acl, gpm, gconf, dbus
+, libselinux, Xaw3d, alsaLib, imagemagick, libXft, librsvg
+, xlibsWrapper
+}:
 
 stdenv.mkDerivation rec {
   name = "emacs-${version}${versionModifier}";
@@ -18,15 +21,27 @@ stdenv.mkDerivation rec {
   buildInputs = [
     gtk3
     gnutls
+    libxml2
     libXaw
     libXext
     libXpm
+    libXft
     libjpeg
     libpng
     libtiff
     libungif
+    librsvg
     ncurses
+    xlibsWrapper
     texinfo
+    gettext
+    gpm
+    gconf
+    libselinux
+    dbus
+    Xaw3d
+    alsaLib
+    imagemagick
   ];
 
   CFLAGS = "-O3";
