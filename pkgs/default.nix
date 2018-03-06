@@ -11,8 +11,5 @@ in
 		inherit (final) emacs;
 	});
 
-	processing = callPackage ./processing { };
-	processingPackagesNg = previous.processingPackagesNg.overrideScope (_: self: {
-		inherit (final) processing;
-	});
+	processing3 = callPackage ./processing { };
 }
