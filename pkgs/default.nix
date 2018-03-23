@@ -1,7 +1,7 @@
-final: previous:
+self: super:
 
 let
-	inherit (final) callPackage newScope;
+	inherit (final) callPackage;
 in
 {
 	processing3 = callPackage ./processing { };
